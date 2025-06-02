@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: #b2e0fff3;
+    filter: drop-shadow(0 0 10px #f7a08ae5);
+    border-radius: 8px;
+}
+
+.title{
+    color: #ff0000;
+    margin-left: 15px;
+}
+
+.title:hover {
+  filter: drop-shadow(0 0 2em #fd3301e5);
+}
+.title.react:hover {
+  filter: drop-shadow(0 0 2em #d40f08d5);
+}
+
+.navContainer{
+    padding-left: 50%;
+    white-space: nowrap;
+}
+
+.ulItems {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.listItem{
+    padding: 3%;
+}
+
+.aItem{
+    color: #ff0000;
+}
+
+.aItem:hover {
+  filter: drop-shadow(0 0 5em #ff3300f3);
+}
+.aItem.react:hover {
+  filter: drop-shadow(0 0 2em #d40f08d5);
+}
