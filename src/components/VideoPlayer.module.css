@@ -1,0 +1,75 @@
+.videoPlayer {
+  max-width: 720px;
+  max-height: 1366px;
+  margin: auto;
+  background: #bd7772;
+  border-radius: 12px;
+  padding: 1rem;
+  color: #fff;
+  font-family: sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.video {
+  width: 100%;
+  height: 380px;
+  border-radius: 8px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.slider {
+  width: 100%;
+  accent-color: #018fd1;
+}
+
+.sliderVolume {
+  width: 15%;
+  accent-color: #018fd1;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.buttonsItem{
+  background: #10cbec;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buttonsClose{
+  background: #643333;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buttonsItem:hover {
+  background: #018ddf;
+}
+
+.buttonsClose:hover{
+  background: #f03a3a;
+}
+
+.timeDisplay {
+  text-align: center;
+  font-size: 18px;
+  color: #270101;
+}
