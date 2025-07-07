@@ -1,9 +1,12 @@
 .container{
+    min-width: 1217px;
     display: flex;
     flex-direction: row;
     background-color: #b2e0fff3;
     filter: drop-shadow(0 0 10px #f7a08ae5);
     border-radius: 8px;
+    align-items: center;
+    gap: 7.4%;
 }
 
 .title{
@@ -18,8 +21,58 @@
   filter: drop-shadow(0 0 2em #d40f08d5);
 }
 
+.inputContainer{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  border: 4px solid rgb(247, 48, 22);
+  border-radius: 8px;
+}
+
+.inputItem{
+  border: 1px solid rgb(247, 48, 22);
+  font-size: 20px;
+}
+
+.predictiveList {
+  position: fixed;
+  background: white;
+  list-style: none;
+  margin-top: 4%;
+  padding: 0;
+  width: 20%;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.predictiveItem {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.predictiveItem:hover {
+  background: #f0f0f0;
+}
+
+.selectItem{
+  border: 1px solid rgb(247, 48, 22);
+  font-size: 16px;
+  list-style: none;
+}
+
+.selectOption{
+  font-size: 16px;
+}
+
+.buttonSearch{
+  border: 1px solid rgb(247, 48, 22);
+  border-radius: 0px;
+}
+
 .navContainer{
-    padding-left: 50%;
     white-space: nowrap;
 }
 
