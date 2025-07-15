@@ -1,54 +1,9 @@
-# React + TypeScript + Vite
+Video de Muestra:
+https://github.com/user-attachments/assets/da14f9ef-5586-4bd1-b137-5c6f5de2c3c9
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Capturas:
+<img width="1366" height="783" alt="entrega3_cap1" src="https://github.com/user-attachments/assets/e61cc1a3-52ef-41ff-b49f-47672eec5ce8" />
+<img width="1366" height="783" alt="entrega3_cap2" src="https://github.com/user-attachments/assets/d34de0e4-a33e-4400-857b-5d6193a09a3e" />
+<img width="1366" height="783" alt="entrega3_cap3" src="https://github.com/user-attachments/assets/18b02301-7285-4337-bbbc-1c7891cabeb5" />
+<img width="1366" height="783" alt="entrega3_cap4" src="https://github.com/user-attachments/assets/4e575515-95f2-4d2e-b7b5-e137b1e332e4" />
+<img width="1366" height="783" alt="entrega3_cap5" src="https://github.com/user-attachments/assets/6820fedb-d0b1-48ac-89f4-f8dbd0cf4079" />
