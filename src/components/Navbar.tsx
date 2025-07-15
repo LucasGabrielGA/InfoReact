@@ -1,19 +1,10 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'
-
-type Card = {
-    id: number;
-    titulo: string;
-    category: string;
-}
-
-type NavbarProps = {
-    searchTerm: string;
-    onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    selectedCategory: string;
-    onCategoryChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    allCards: Card[];
-    onPlay: () => void;
-}
+import { type NavbarProps } from '../types/componentsProps';
+import { filterCards } from '../utils/filterCards';
+import { useNavigate } from 'react-router-dom';
+import { getCategoryWithEmoji } from '../utils/categoryEmojis';
 
 function Navbar(props: NavbarProps){
     const{
@@ -22,16 +13,22 @@ function Navbar(props: NavbarProps){
         selectedCategory,
         onCategoryChange,
         allCards,
-        onPlay,
     } = props
-    const uniqueCategories = Array.from(new Set(allCards.map((card) => card.category)));
+    const uniqueCategories = Array.from(new Set(allCards.map((card) => card.category).sort()));
+
+    const navigate = useNavigate();
+    const handleSearchButton = () =>{
+        navigate(`/resultados?q=${encodeURIComponent(searchTerm)}&cat=${encodeURIComponent(selectedCategory)}`);
+    }
+
+    const [isFocused, setIsFocused] = useState(false);
     
     return(
-        <header>
+        <header className={styles.headerElement}>
             <div className={styles.container}>
-                <a href="">
+                <Link to={'/'}>
                     <h2 className={styles.title}>Streaming InfoReact</h2>
-                </a>
+                </Link>
                 <div className={styles.inputContainer}>
                     <input 
                         className={styles.inputItem} 
@@ -39,16 +36,18 @@ function Navbar(props: NavbarProps){
                         placeholder='Buscar por título'
                         value={searchTerm}
                         onChange={onSearchChange}
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={() => setIsFocused(false)}
                     />
-                    {searchTerm && (
+                    {searchTerm && isFocused && (
                         <ul className={styles.predictiveList}>
-                            {allCards
-                                .filter((card) => (
-                                    card.titulo.toLowerCase().startsWith(searchTerm)
-                                )
-                            ).map((card) => (
-                                <li key={card.id} className={styles.predictiveItem} onClick={onPlay}>
-                                    {card.titulo}
+                            {filterCards(allCards, searchTerm, selectedCategory).map((card) => (
+                                <li
+                                    key={card.id}
+                                    className={styles.predictiveItem}
+                                    onMouseDown={() => props.onNavigateToDetail(card.id)}
+                                >
+                                    {card.title}
                                 </li>
                             ))}
                         </ul>
@@ -63,25 +62,22 @@ function Navbar(props: NavbarProps){
                                 className={styles.selectOption}
                                 key={category}
                                 value={category}>
-                                {category}
+                                {getCategoryWithEmoji(category)}
                             </option>
                         ))}
                     </select>
-                    <button className={styles.buttonSearch}>🔍</button>
+                    <button className={styles.buttonSearch} onClick={handleSearchButton}>🔍</button>
                 </div>
                 <nav className={styles.navContainer}>
                     <ul className={styles.ulItems}>
                         <li className={styles.listItem}>
-                            <a className={styles.aItem} href="#Inicio">Inicio</a>
+                            <Link className={styles.aItem} to={'/'}>Inicio</Link>
                         </li>
                         <li className={styles.listItem}>
-                            <a className={styles.aItem} href="#Series">Series</a>
+                            <Link className={styles.aItem} to={'/category/'}>Categorías</Link>
                         </li>
                         <li className={styles.listItem}>
-                            <a className={styles.aItem} href="#Películas">Películas</a>
-                        </li>
-                        <li className={styles.listItem}>
-                            <a className={styles.aItem} href="#MiStreaming">Mi Streaming</a>
+                            <Link className={styles.aItem} to={'/favoritos'}>Mi Streaming</Link>
                         </li>
                     </ul>
                 </nav>

@@ -5,6 +5,17 @@
   text-align: center;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('/vecteezy-light-blue.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Para que no se desplace al hacer scroll */
+  font-family: sans-serif; /* Opcional: para asegurar buena tipografía */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

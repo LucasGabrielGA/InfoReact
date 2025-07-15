@@ -1,75 +1,196 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .videoPlayer {
-  max-width: 720px;
-  max-height: 1366px;
-  margin: auto;
-  background: #bd7772;
-  border-radius: 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding: 1rem;
+  box-sizing: border-box;
+  z-index: 1000;
+  animation: fadeInUp 0.5s ease;
+}
+
+.videoTitle {
   color: #fff;
-  font-family: sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .video {
   width: 100%;
-  height: 380px;
-  border-radius: 8px;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  margin-bottom: 1rem;
 }
 
 .controls {
+  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
-  margin-top: 0.8rem;
+  color: #fff;
+  margin-top: auto;
+  padding-bottom: 1rem;
 }
 
 .slider {
   width: 100%;
-  accent-color: #018fd1;
+  appearance: none;
+  height: 5px;
+  background: #f10e0e;
+  border-radius: 4px;
+  appearance: none;
+  outline: none;
 }
 
-.sliderVolume {
-  width: 15%;
-  accent-color: #018fd1;
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.timeRow {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.timeDisplay {
+  font-size: 0.95rem;
+  color: #ccc;
+  white-space: nowrap;
 }
 
 .buttonsContainer {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
 }
 
-.buttonsItem{
-  background: #10cbec;
-  color: white;
+.buttonsItem {
+  background-color: #222;
+  color: #fff;
   border: none;
-  padding: 0.4rem 0.8rem;
+  padding: 0.6rem 0.9rem;
   border-radius: 8px;
-  font-size: 25px;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.buttonsClose{
-  background: #643333;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  font-size: 24px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .buttonsItem:hover {
-  background: #018ddf;
+  background-color: #444;
+  transform: translateY(-2px);
 }
 
-.buttonsClose:hover{
-  background: #f03a3a;
+@media screen and (-webkit-min-device-pixel-ratio:0){
+  .sliderVolume {
+    width: 100px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    overflow: hidden;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .sliderVolume::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      background: #f1cdcd;
+      margin-top: -1px;
+  }
+
+  .sliderVolume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: -100px 0 0 100px #f10e0e;
+    position: relative;
+    z-index: 2;
+  }
 }
 
-.timeDisplay {
-  text-align: center;
-  font-size: 18px;
-  color: #270101;
+
+.buttonsClose {
+  background-color: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttonsClose:hover {
+  background-color: #e74c3c;
+  transform: scale(1.1);
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .buttonsItem {
+    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+  }
+
+  .sliderVolume {
+    width: 80px;
+  }
+
+  .videoTitle {
+    font-size: 1.4rem;
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.closing {
+  animation: fadeOutDown 0.4s ease forwards;
 }
