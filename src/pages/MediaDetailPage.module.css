@@ -1,0 +1,61 @@
+.detailContainer {
+  padding: 2rem;
+  min-height: calc(100vh - 100px);
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.image {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.textContent {
+  flex: 1;
+  min-width: 250px;
+}
+
+.synopsis {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #666;
+}
+
+.buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #2177da;
+  color: white;
+}
+
+button:hover {
+  background-color: #78aeec;
+}
+
+.noContent {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+}
