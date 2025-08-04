@@ -5,9 +5,8 @@ import { type NavbarProps } from '../types/componentsProps';
 import { filterCards } from '../utils/filterCards';
 import { useNavigate } from 'react-router-dom';
 import { getCategoryWithEmoji } from '../utils/categoryEmojis';
-import { useQuery } from '@tanstack/react-query';
-import { movieService } from '../services/service';
-import { type Movie } from '../types/movieTypes';
+import { useMovies } from '../hooks/useMovies';
+import contentMsg from '../pages/ContentMessages.module.css';
 
 function Navbar(props: NavbarProps){
     const{
@@ -18,22 +17,35 @@ function Navbar(props: NavbarProps){
         //allCards,
     } = props
     //const uniqueCategories = Array.from(new Set(allCards.map((card) => card.category).sort()));
-    const { data: movies = [], isLoading, isError } = useQuery<Movie[]>({
-    queryKey: ['movies'],
-    queryFn: movieService.getAllMovies,
-  });
+    const { data: movies, isLoading, isError } = useMovies();
+    const navigate = useNavigate();
+    const [isFocused, setIsFocused] = useState(false);
+
+     if (isLoading) 
+    return (
+      <>
+        <div className={contentMsg.container}>
+        <div className={contentMsg.loadingIcon}></div>
+        <p className={contentMsg.loadingMessage}>Cargando contenido...</p>
+      </div>
+      </>
+    );
+  if (isError || !movies ) 
+    return (
+      <div className={contentMsg.container}>
+        <div className={contentMsg.errorIcon}>⚠️</div>
+        <p className={contentMsg.errorMessage}>Error al cargar las películas.</p>
+      </div>
+    );
+
     const uniqueCategories = Array.from(
     new Set(
       movies.flatMap((movie) => movie.genre).sort((a, b) => a.localeCompare(b))
     )
   );
-
-    const navigate = useNavigate();
     const handleSearchButton = () =>{
         navigate(`/resultados?q=${encodeURIComponent(searchTerm)}&cat=${encodeURIComponent(selectedCategory)}`);
     }
-
-    const [isFocused, setIsFocused] = useState(false);
     
     return(
         <header className={styles.headerElement}>
