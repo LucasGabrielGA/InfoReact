@@ -10,6 +10,10 @@ import NotFoundPage from './pages/NotFoundPage';
 import ResultsPage from './pages/ResultsPage'
 import { FavoritesProvider } from './context/favoritesContext';
 
+import CreateMoviePage from './pages/CreateMoviePage';
+import EditMoviePage from './pages/EditMoviePage';
+import EditMovieListPage from './pages/EditMovieListPage';
+
 function App() {
   return (
     <FavoritesProvider>
@@ -22,6 +26,9 @@ function App() {
           <Route path="/media/:id/play" element={<VideoPlayerPage />} />
           <Route path="/favoritos" element={<FavoritesPage />} />
           <Route path="/resultados" element={<ResultsPage />} />
+          <Route path="/crear" element={<CreateMoviePage />} />
+          <Route path="/editar" element={<EditMovieListPage />} />
+          <Route path="/editar/:id" element={<EditMoviePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

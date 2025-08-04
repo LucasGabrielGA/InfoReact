@@ -5,6 +5,9 @@ import { type NavbarProps } from '../types/componentsProps';
 import { filterCards } from '../utils/filterCards';
 import { useNavigate } from 'react-router-dom';
 import { getCategoryWithEmoji } from '../utils/categoryEmojis';
+import { useQuery } from '@tanstack/react-query';
+import { movieService } from '../services/service';
+import { type Movie } from '../types/movieTypes';
 
 function Navbar(props: NavbarProps){
     const{
@@ -12,9 +15,18 @@ function Navbar(props: NavbarProps){
         onSearchChange,
         selectedCategory,
         onCategoryChange,
-        allCards,
+        //allCards,
     } = props
-    const uniqueCategories = Array.from(new Set(allCards.map((card) => card.category).sort()));
+    //const uniqueCategories = Array.from(new Set(allCards.map((card) => card.category).sort()));
+    const { data: movies = [], isLoading, isError } = useQuery<Movie[]>({
+    queryKey: ['movies'],
+    queryFn: movieService.getAllMovies,
+  });
+    const uniqueCategories = Array.from(
+    new Set(
+      movies.flatMap((movie) => movie.genre).sort((a, b) => a.localeCompare(b))
+    )
+  );
 
     const navigate = useNavigate();
     const handleSearchButton = () =>{
@@ -38,10 +50,11 @@ function Navbar(props: NavbarProps){
                         onChange={onSearchChange}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
+                        disabled={isLoading || isError}
                     />
                     {searchTerm && isFocused && (
                         <ul className={styles.predictiveList}>
-                            {filterCards(allCards, searchTerm, selectedCategory).map((card) => (
+                            {filterCards(movies, searchTerm, selectedCategory).map((card) => (
                                 <li
                                     key={card.id}
                                     className={styles.predictiveItem}
@@ -78,6 +91,15 @@ function Navbar(props: NavbarProps){
                         </li>
                         <li className={styles.listItem}>
                             <Link className={styles.aItem} to={'/favoritos'}>Mi Streaming</Link>
+                        </li>
+                        <li className={styles.listItem}>
+                            <div className={styles.dropdownWrapper}>
+                                <span className={styles.aItem}>Admin ⏷</span>
+                                <ul className={styles.dropdownMenu}>
+                                <li><Link className={styles.dropdownItem} to="/crear">Crear Película</Link></li>
+                                <li><Link className={styles.dropdownItem} to="/editar">Editar Películas</Link></li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </nav>

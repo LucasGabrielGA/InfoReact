@@ -26,18 +26,12 @@ function FavoritesPage() {
 
   return (
     <MediaCardContainer title="Mis Favoritos" description="Tus series y películas favoritas.">
-      {favorites.map(card => (
+      {favorites.map(movie => (
         <MediaCard
-          key={card.id}
-          id={card.id}
-          src={card.src}
-          title={card.title}
-          category={card.category}
-          duration={card.duration}
-          description={card.description}
-          videoUrl={card.videoUrl}
-          onDetail={() => handleDetail(card.id)}
-          onPlay={() => handlePlay(card.id)}
+          key={movie.id}
+          movie={movie}
+          onDetail={() => handleDetail(movie.id)}
+          onPlay={() => handlePlay(movie.id)}
         />
       ))}
     </MediaCardContainer>
