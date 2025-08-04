@@ -1,54 +1,6 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Algunas capturas de muestra:
+<img width="1366" height="783" alt="Entrega4_cap1" src="https://github.com/user-attachments/assets/d7ce048e-79e6-4ab5-ad63-a71708f50625" />
+<img width="1366" height="783" alt="Entrega4_cap2" src="https://github.com/user-attachments/assets/80083f6d-b809-4c5f-9881-a4eeaba42b8c" />
+<img width="1366" height="783" alt="Entrega4_cap3" src="https://github.com/user-attachments/assets/fbadafb4-68ca-4546-bdcc-5c4adbbe685a" />
+<img width="1366" height="783" alt="Entrega4_cap4" src="https://github.com/user-attachments/assets/10c1e044-37e8-4bac-921f-46ce0186171e" />
+<img width="1366" height="783" alt="Entrega4_cap5" src="https://github.com/user-attachments/assets/ec96525a-d0bf-447e-b5a0-f256c6c05ec0" />
