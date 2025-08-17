@@ -92,8 +92,6 @@ function MediaCard({ movie, onDetail, onPlay }: MediaCardProps) {
     genre,
     runtime,
     poster,
-    plot,
-    videoUrl
   } = movie;
 
   const category = genre[0] ?? 'Sin categoría';
