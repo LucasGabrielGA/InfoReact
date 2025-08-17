@@ -14,6 +14,19 @@ export const categoryEmojis: Record<string, string> = {
   "Vampiros": "🧛🏻‍♀️",
   "Western": "🐎",
   
+  "Action": "💣",
+  "Aventure": "🧭",
+  "Classics": "🎥",
+  "Comedy": "😂",
+  "Crime": "🚬",
+  "Documentary": "📚",
+  "Horror": "👻",
+  "Parody": "🤡",
+  "Science Fiction": "👽",
+  "Sci-Fi": "👽",
+  "Vampires": "🧛🏻‍♀️",
+  "Warlike": "⚔️",
+  
 };
 
 export function getCategoryWithEmoji(category: string): string {
